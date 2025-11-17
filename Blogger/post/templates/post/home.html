@@ -1,0 +1,30 @@
+{% extends "post/base.html" %}
+{% block title %}Latest posts{% endblock %}
+
+{% block content %}
+
+
+    {% if posts %}
+    <div class="post-grid">
+        {% for post in posts %}
+        <article class="post">
+            <div class="post-top">
+                <h3 class="post-title">{{ post.title }}</h3>
+                <span class="post-time">
+                    <span class="material-symbols-rounded time-icon">schedule</span>
+                    {{ post.published_at|date:"M d, Y · H:i" }}
+                </span>
+            </div>
+            <p class="post-text">{{ post.content|linebreaksbr }}</p>
+        </article>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty">
+        <p>No posts.</p>
+    <a href="{% url 'post:add_post' %}" class="btn-main small-btn">Write the first</a>
+    </div>
+    {% endif %}
+
+</section>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block title %}Blogger{% endblock %}</title>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+	<nav>
+		<a href="{% url 'post:home' %}">home</a> |
+		<a href="{% url 'post:add_post' %}">add post</a>
+	</nav>
+	<hr>
+	<main>
+		{% block content %}{% endblock %}
+	</main>
+
+	<header class="blog-header">
+		<img src="{% static 'images/logo.png' %}" alt="Blogger Logo" class="blog-logo">
+		<h1>Blogger</h1>
+		<p class="blog-desc">A blog website to display and share the latest posts.</p>
+	</header>
+	<nav class="blog-nav">
+		<a href="{% url 'post:home' %}">Home</a>
+		<a href="{% url 'post:add_post' %}">Add Post</a>
+	</nav>
+	<hr>
+	<main class="blog-main">
+		{% block content %}{% endblock %}
+	</main>
+	<footer class="blog-footer">
+		&copy; 2025 Blogger. All rights reserved.
+	</footer>
+    
+</body>
+</html>
